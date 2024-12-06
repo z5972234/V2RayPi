@@ -5,7 +5,6 @@ Author:     twotrees.us@gmail.com
 Date:       2020年7月29日  31周星期三 21:57
 Desc:
 """
-
 from typing import List
 from typing import Dict
 from datetime import datetime
@@ -19,16 +18,18 @@ from .keys import Keyword as K
 from .node import Node
 from .base_data_item import BaseDataItem
 
+
 class NodeGroup:
     def __init__(self):
         self.subscribe: str = ''
         self.nodes: List[Node] = []
 
+
 class NodeManager(BaseDataItem):
     def __init__(self):
         self.last_subscribe = ''
-        self.subscribes: Dict= {}
-        self.manual_nodes:List[Node] = []
+        self.subscribes: Dict = {}
+        self.manual_nodes: List[Node] = []
 
     def filename(self):
         return 'config/nodes.json'
@@ -43,7 +44,8 @@ class NodeManager(BaseDataItem):
         for line in list.splitlines():
             if line.startswith(K.vmess_scheme):
                 line = line[len(K.vmess_scheme):]
-                line = base64.b64decode(line).decode('utf8')
+                line += '=' * (-len(line) % 4)
+                line = base64.b64decode(line)
                 data = json.loads(line)
                 node = Node().load_data(data)
                 group.nodes.append(node)
@@ -91,7 +93,7 @@ class NodeManager(BaseDataItem):
             self.manual_nodes.append(node)
             self.save()
 
-    def find_node(self, url:str, index:int) -> Node:
+    def find_node(self, url: str, index: int) -> Node:
         node = None
         if url == K.manual:
             node = self.manual_nodes[index]
@@ -99,7 +101,7 @@ class NodeManager(BaseDataItem):
             node = self.subscribes[url].nodes[index]
         return node
 
-    def find_node_index(self, url:str, node_ps:str):
+    def find_node_index(self, url: str, node_ps: str):
         node_list = None
         if url == K.manual:
             node_list = self.manual_nodes
@@ -111,7 +113,7 @@ class NodeManager(BaseDataItem):
 
         return -1
 
-    def all_nodes(self) ->list :
+    def all_nodes(self) -> list:
         nodes = []
         for url in self.subscribes.keys():
             group = self.subscribes[url]
@@ -122,7 +124,7 @@ class NodeManager(BaseDataItem):
     def refresh_update_time(self):
         self.last_subscribe = datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
-    def ping_test_all(self) -> list :
+    def ping_test_all(self) -> list:
         results = []
 
         for url in self.subscribes.keys():
@@ -132,8 +134,8 @@ class NodeManager(BaseDataItem):
 
             node_results = self.ping_test_group(group.nodes)
             group_result = {
-                K.subscribe : url,
-                K.nodes : node_results
+                K.subscribe: url,
+                K.nodes: node_results
             }
 
             results.append(group_result)
