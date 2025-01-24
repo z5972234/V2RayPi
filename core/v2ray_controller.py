@@ -64,11 +64,11 @@ class V2rayController:
         return ret
 
     def access_log(self) -> str:
-        lines = self.tailf(V2rayDefaultPath.access_log() , 10)
+        lines = self.tailf(V2rayDefaultPath.access_log() , 20)
         return lines.replace('\n', '<br>')
 
     def error_log(self) -> str:
-        lines = self.tailf(V2rayDefaultPath.error_log(), 10)
+        lines = self.tailf(V2rayDefaultPath.error_log(), 20)
         return lines.replace('\n', '<br>')
 
     def tailf(self, file, count)->str:

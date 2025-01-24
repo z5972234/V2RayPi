@@ -5,71 +5,71 @@
         <div class="mdui-table-fluid">
             <table id="advance_table" class="mdui-table">
                 <tbody>
-                <tr>
-                    <td colspan="6">
-                        <div class="mdui-row mdui-typo mdui-valign">
-                            <h5 class="mdui-col-xs-2">自动切换</h5>
-                            <h6 class="mdui-typo-caption-opacity mdui-col-xs-8">按预设的探测地址和间隔时间进行 https 请求测试，如果连续超时或失败超过指定次数，则自动切换到根据 ping 值优选的节点</h6>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>启用</td>
-                    <td colspan="5">
-                        <label class="mdui-switch">
-                            <input id="enable_auto_switch" type="checkbox" checked onchange="enable_auto_detect_change()"/>
-                            <i class="mdui-switch-icon"></i>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>探测地址</td>
-                    <td colspan="2">
-                        <input id="detect_url" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="text" onchange="detect_url_change()"/>
-                    </td>
-                    <td colspan="3">
-                        <div class="mdui-typo-caption-opacity">必须为 https 开头的国外地址，错误的地址会导致反复切换，请谨慎填写</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>时间间隔</td>
-                    <td colspan="2">
-                        <div>
-                            <input id="detect_time_span" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_time_span_change()" style="text-align: center;max-width: 50px"/>
-                        </div>
+<!--                <tr>-->
+<!--                    <td colspan="6">-->
+<!--                        <div class="mdui-row mdui-typo mdui-valign">-->
+<!--                            <h5 class="mdui-col-xs-2">自动切换</h5>-->
+<!--                            <h6 class="mdui-typo-caption-opacity mdui-col-xs-8">按预设的探测地址和间隔时间进行 https 请求测试，如果连续超时或失败超过指定次数，则自动切换到根据 ping 值优选的节点</h6>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>启用</td>-->
+<!--                    <td colspan="5">-->
+<!--                        <label class="mdui-switch">-->
+<!--                            <input id="enable_auto_switch" type="checkbox" checked onchange="enable_auto_detect_change()"/>-->
+<!--                            <i class="mdui-switch-icon"></i>-->
+<!--                        </label>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>探测地址</td>-->
+<!--                    <td colspan="2">-->
+<!--                        <input id="detect_url" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="text" onchange="detect_url_change()"/>-->
+<!--                    </td>-->
+<!--                    <td colspan="3">-->
+<!--                        <div class="mdui-typo-caption-opacity">必须为 https 开头的国外地址，错误的地址会导致反复切换，请谨慎填写</div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>时间间隔</td>-->
+<!--                    <td colspan="2">-->
+<!--                        <div>-->
+<!--                            <input id="detect_time_span" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_time_span_change()" style="text-align: center;max-width: 50px"/>-->
+<!--                        </div>-->
 
-                    </td>
-                    <td colspan="3">
-                        <div class="mdui-typo-caption-opacity">单位：秒，整数，范围：10-3600</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>请求超时</td>
-                    <td colspan="2">
-                        <input id="detect_timeout" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_timeout_change()" style="text-align: center;max-width: 50px"/>
-                    </td>
-                    <td colspan="3">
-                        <div class="mdui-typo-caption-opacity">单位：秒，支持小数，范围：0.5-10</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>重试次数</td>
-                    <td colspan="2">
-                        <input id="detect_max_retry" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_max_retry_change()" style="text-align: center;max-width: 50px"/>
-                    </td>
-                    <td colspan="3">
-                        <div class="mdui-typo-caption-opacity">达到重试次数后触发切换，范围：1-10</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>最近切换</td>
-                    <td colspan="5">
-                        <div class="mdui-row">
-                            <div id="detect_last_switch_time" class="mdui-col mdui-typo-caption-opacity"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="mdui-color-grey-100"><td colspan="6"></td></tr>
+<!--                    </td>-->
+<!--                    <td colspan="3">-->
+<!--                        <div class="mdui-typo-caption-opacity">单位：秒，整数，范围：10-3600</div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>请求超时</td>-->
+<!--                    <td colspan="2">-->
+<!--                        <input id="detect_timeout" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_timeout_change()" style="text-align: center;max-width: 50px"/>-->
+<!--                    </td>-->
+<!--                    <td colspan="3">-->
+<!--                        <div class="mdui-typo-caption-opacity">单位：秒，支持小数，范围：0.5-10</div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>重试次数</td>-->
+<!--                    <td colspan="2">-->
+<!--                        <input id="detect_max_retry" class="mdui-textfield-input mdui-col-sm-3 mdui-typo-display-1" type="number" onchange="detect_max_retry_change()" style="text-align: center;max-width: 50px"/>-->
+<!--                    </td>-->
+<!--                    <td colspan="3">-->
+<!--                        <div class="mdui-typo-caption-opacity">达到重试次数后触发切换，范围：1-10</div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>最近切换</td>-->
+<!--                    <td colspan="5">-->
+<!--                        <div class="mdui-row">-->
+<!--                            <div id="detect_last_switch_time" class="mdui-col mdui-typo-caption-opacity"></div>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr class="mdui-color-grey-100"><td colspan="6"></td></tr>-->
                 <tr>
                     <td colspan="6">
                         <div class="mdui-row mdui-typo mdui-valign">
